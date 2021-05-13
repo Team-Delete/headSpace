@@ -9,7 +9,7 @@ class Quote extends React.Component {
   render() {
     return(
       <>
-      <h2>Hellllll</h2>
+      <h2>Hello!</h2>
       </>
     )
   }
