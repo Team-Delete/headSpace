@@ -38,13 +38,13 @@ https.get(`${baseURL}/joke/${categories.join(",")}?${params.join("&")}`, res => 
 
 
 // API CALL
-const JokeAPI = require('sv443-joke-api');
+// const JokeAPI = require('sv443-joke-api');
 
-JokeAPI.getJokes()
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data)
-  })
+// JokeAPI.getJokes()
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log(data)
+//   })
 
 class Jokes extends React.Component {
   constructor(props) {
@@ -58,7 +58,7 @@ class Jokes extends React.Component {
       <>
         <h2>Jokes</h2>
         <div id="joke-container">
-          <h2 id="joke--text"></h2>
+          <h2 id="joke--text">Joke Text</h2>
         </div>
       </>
     )
