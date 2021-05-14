@@ -1,6 +1,7 @@
 import React from 'react';
+import './App.css';
 // import Mood from './Mood';
-// import Profile from './Profile';
+import Profile from './Profile';
 // import Weather from './Weather';
 // import Quote from './Quote';
 // import Jokes from './Jokes';
@@ -11,15 +12,17 @@ import React from 'react';
 
 // Render compenent -- shouldn't need bootstrap.
 
+// Router
 
 
 class App extends React.Component {
   render() {
-    return(
+    return (
       <>
-      <h2>Hello!</h2>
+        <Profile />
+        <h2>Hello!</h2>
       </>
-    )
+    );
   }
 }
 export default App;

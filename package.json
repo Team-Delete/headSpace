@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@auth0/auth0-react": "^1.5.0",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
     "react": "^17.0.2",
+    "react-bootstrap": "^1.6.0",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
@@ -34,5 +36,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "File just created to allow provisions of branch settings.  Please do not add to this file File will be deleted when react app has be initiated",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Team-Delete/headSpace.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Team-Delete/headSpace/issues"
   }
 }

@@ -1,5 +1,8 @@
 import React from 'react';
-import { renderIntoDocument } from 'react-dom/test-utils';
+import { withAuth0 } from '@auth0/auth0-react';
+import Navbar from 'react-bootstrap/Navbar';
+import { Nav } from 'react-bootstrap';
+
 
 // TO DO // 
 // Auth0 main frame for initalizing user component, 
@@ -14,13 +17,41 @@ import { renderIntoDocument } from 'react-dom/test-utils';
 
 // bootstrap required
 
-class Profile extends React.Component {
-  render() {
-    return(
+const UserProfile = () => {
+  const { user, isAuthenticated, isLoading } = withAuth0();
+
+  if (isLoading) {
+    return <div>Loading Page</div>;
+  }
+  return (
+    isAuthenticated && (
       <>
-      <h2>Hello!</h2>
+        <img id="Picture" src={user.picture} alt={user.name} />
+        <h2>{user.name}</h2>
+        <p>{user.email}</p>
       </>
     )
+  );
+};
+
+
+class Profile extends React.Component {
+  render() {
+    return (
+      <>
+        <Navbar bg="dark" variant="dark" fixed="top">
+          <Navbar.Brand href="WHATEVER URL">Home</Navbar.Brand>
+          <Nav className="mr-auto">
+            <Nav.Link href="/Home">Home</Nav.Link>
+            <Nav.Link href="/Profile">Profile</Nav.Link>
+            <Nav.Link href="/About">About Us</Nav.Link>
+            {/* <Nav.Link href="/Suggestions">Suggestions</Nav.Link> */}
+          </Nav>
+        </Navbar>
+        <UserProfile />
+        <h2>Hello! Welcome to my APP</h2>
+      </>
+    );
   }
 }
-export default Profile;
+export default withAuth0(Profile);
