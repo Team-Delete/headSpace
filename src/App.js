@@ -1,9 +1,9 @@
 import React from 'react';
-import Mood from './Mood';
-import Profile from './Profile';
-import Weather from './Weather';
-import Quote from './Quote';
-import Jokes from './Jokes';
+// import Mood from './Mood';
+// import Profile from './Profile';
+// import Weather from './Weather';
+// import Quote from './Quote';
+// import Jokes from './Jokes';
 
 
 
