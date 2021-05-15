@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-// import Mood from './Mood';
+import Mood from './Mood';
 import Profile from './Profile';
 import AboutUs from './AboutUs';
 // import Weather from './Weather';
@@ -26,19 +26,20 @@ import {
 
 class App extends React.Component {
   render() {
+    console.log('Im here now');
     const { isAuthenticated } = this.props.auth0;
     return (
       <>
         <Router>
-          <Switch>
-            {/* reminder! Change first <Profile /> to Home when merged with kevins code */}
-            <Route exact path="/">{isAuthenticated ? <Profile /> : <Profile />};
+          <AboutUs />
+          <Switch> 
+            reminder! Change first <Profile /> to Home when merged with kevins code
+            <Route exact path="/Profile">{isAuthenticated ? <Mood /> : <Profile />};
             </Route>
-            <Route exact path="/profile">
+            <Route exact path="/Profile">
               <Profile />
             </Route>
-            <Route exact path="/about">
-              <AboutUs />
+            <Route exact path="/AboutUs">
             </Route>
           </Switch>
         </Router>
@@ -47,18 +48,3 @@ class App extends React.Component {
   }
 }
 export default withAuth0(App);
-
-
-
-{/* <>
-<Navbar bg="dark" variant="dark" fixed="top">
-  <Navbar.Brand>Welcome!</Navbar.Brand>
-  <Nav className="mr-auto">
-    <Nav.Link href="/Home">Home</Nav.Link>
-    <Nav.Link href="/Profile">Profile</Nav.Link>
-    <Nav.Link href="/About">About Us</Nav.Link>
-    {/* <Nav.Link href="/Suggestions">Suggestions</Nav.Link> */}
-//   </Nav>
-//   <Button variant="dark" size="lg" onClick={this.props.UserProfile}>Add new user</Button>
-// </Navbar>
-// <Profile /> */}
