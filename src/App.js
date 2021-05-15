@@ -17,13 +17,6 @@ import {
 
 
 
-// Use for the main stream line component. Should have low functions, high imports for render.
-
-// Render compenent -- shouldn't need bootstrap.
-
-// Router
-
-
 class App extends React.Component {
   render() {
     const { isAuthenticated } = this.props.auth0;
