@@ -33,7 +33,6 @@ class App extends React.Component {
         searchedYet: true
       });
       this.getWeatherData();
-      // this.getMovieData();
       console.log(this.state);
     } catch (err) {
       console.log(err);
@@ -91,20 +90,15 @@ class App extends React.Component {
               <Form.Control value={this.state.city} onInput={e => this.setState({ city: e.target.value })}></Form.Control>
             </Form.Group>
             <Button variant="primary" type="submit">
-              Explore!
+              Set WeatherData
           </Button>
           </Form>
           {this.state.cityData.lat === undefined ?
             <>
               <Weather weatherData={this.state.weatherData} />
-              {/* <Movies movieData={this.state.movieData} /> */}
             </>
             : console.log(`dang`)}
         </Container>
-        <button onClick={this.getWeatherData}>
-          Get WeatherData
-        </button>
-        <Weather weatherData={this.state.weatherData} />
         <button onClick={this.handleMoodSubmit}>
           Set Mood and call Joke API
         </button>
