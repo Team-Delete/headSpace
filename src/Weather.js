@@ -1,21 +1,22 @@
 import React from 'react';
-
-// Weather data for static display
-
-// link to API
-
-// link to Database
-
-// Bootstrap Required
-
+// import ListGroup from 'react-bootstrap/ListGroup';
+import WeatherDay from './WeatherDay';
 
 class Weather extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
   render() {
-    return(
+    return (
       <>
-      <h2>Hello!</h2>
+        {this.props.weatherData.map((day, index) => (
+          <WeatherDay key={index} day={day} />))}
       </>
-    )
+    );
   }
 }
+
 export default Weather;

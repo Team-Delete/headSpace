@@ -1,12 +1,62 @@
 import axios from 'axios';
 import React from 'react';
+import Weather from './Weather';
 import Jokes from './Jokes';
+
+// temp imports to render weather
+import Container from 'react-bootstrap/Container';
+import Error from './Error';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      city: '',
+      cityData: {},
+      weatherData: [],
+      // movieData: [],
+      searchedYet: false
     };
+  }
+
+  handleFormSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      let cityData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=pk.147c380296b5e463e0f911244af73a5e&q=${this.state.city}&format=json`);
+      let cityTarget = cityData.data[0];
+      this.setState({
+        cityName: cityTarget.display_name,
+        lat: cityTarget.lat,
+        lon: cityTarget.lon,
+        searchedYet: true
+      });
+      this.getWeatherData();
+      // this.getMovieData();
+      console.log(this.state);
+    } catch (err) {
+      console.log(err);
+      this.setState({ error: `${err.message}: ${err.message.data}` });
+    }
+  }
+
+  getWeatherData = async () => {
+    try {
+      let weatherData = await axios.get(`http://localhost:3002/weather`, {
+        params: {
+          lat: this.state.lat,
+          lon: this.state.lon
+        }
+      });
+      console.log('this works', weatherData);
+      this.setState({
+        weatherData: weatherData.data
+      })
+    } catch (err) {
+      console.log(`error found!!! ${err.message}`);
+      this.setState({ error: `${err.message}: ${err.message.data}` });
+    }
   }
 
   handleMoodSubmit = async (event) => {
@@ -23,7 +73,7 @@ class App extends React.Component {
     try {
       let jokeData = await axios.get(`https://v2.jokeapi.dev/joke/Dark?format=json&blacklistFlags=nsfw,sexist&type=single&lang=en&amount=1`);
       // console.log(jokeData.data.joke);
-      this.setState({ jokeData: jokeData.data.joke});
+      this.setState({ jokeData: jokeData.data.joke });
     } catch (err) {
       console.log(`error found!!! ${err.message}`);
       this.setState({ error: `${err.message}: ${err.message.data}` });
@@ -33,11 +83,31 @@ class App extends React.Component {
   render() {
     return (
       <>
+      <Container>
+          {this.state.error ? <Error error={this.state.error}/> : ''}
+          <Form onSubmit={this.handleFormSubmit}>
+            <Form.Group controlId="City">
+              <Form.Label>City name</Form.Label>
+              <Form.Control value={this.state.city} onInput={e => this.setState({ city: e.target.value })}></Form.Control>
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Explore!
+          </Button>
+          </Form>
+          {this.state.cityData.lat === undefined ?
+            <>
+              <Weather weatherData={this.state.weatherData} />
+              {/* <Movies movieData={this.state.movieData} /> */}
+            </>
+            : console.log(`dang`)}
+        </Container>
+        <button onClick={this.getWeatherData}>
+          Get WeatherData
+        </button>
+        <Weather weatherData={this.state.weatherData} />
         <button onClick={this.handleMoodSubmit}>
           Set Mood and call Joke API
         </button>
-        {/* <h2>Returned Joke:</h2> */}
-        {/* <p>{jokeData}</p> */}
         <Jokes jokeData={this.state.jokeData} />
       </>
     )
