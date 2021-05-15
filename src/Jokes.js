@@ -10,7 +10,7 @@ class Jokes extends React.Component {
   render() {
     return(
       <>
-      <h2>Hello!</h2>
+      <h2>Hello! Jokes Page</h2>
       </>
     )
   }

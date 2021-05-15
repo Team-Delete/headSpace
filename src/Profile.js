@@ -1,14 +1,13 @@
 import React from 'react';
-import { withAuth0 } from '@auth0/auth0-react';
-import Navbar from 'react-bootstrap/Navbar';
-import { Nav } from 'react-bootstrap';
+import { withAuth0, useAuth0 } from '@auth0/auth0-react';
+import { Card, Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Profile.css';
 
 
-// TO DO // 
-// Auth0 main frame for initalizing user component, 
+// TO DO //
 
-// main profile page, 
-
+// Auth0 main frame for initalizing user component
 // axios call for mood updating
 
 // internal links for further page navigation
@@ -17,8 +16,17 @@ import { Nav } from 'react-bootstrap';
 
 // bootstrap required
 
+// __ DONE__
+// main profile page
+
+
+const LoginButton = () => {
+  const { loginWithRedirect } = useAuth0();
+  return <Button variant="dark" onClick={() => loginWithRedirect()}>Sign in!</Button>;
+};
+
 const UserProfile = () => {
-  const { user, isAuthenticated, isLoading } = withAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth0();
 
   if (isLoading) {
     return <div>Loading Page</div>;
@@ -37,19 +45,17 @@ const UserProfile = () => {
 
 class Profile extends React.Component {
   render() {
+    const { isAuthenticated } = this.props.auth0;
     return (
       <>
-        <Navbar bg="dark" variant="dark" fixed="top">
-          <Navbar.Brand href="WHATEVER URL">Home</Navbar.Brand>
-          <Nav className="mr-auto">
-            <Nav.Link href="/Home">Home</Nav.Link>
-            <Nav.Link href="/Profile">Profile</Nav.Link>
-            <Nav.Link href="/About">About Us</Nav.Link>
-            {/* <Nav.Link href="/Suggestions">Suggestions</Nav.Link> */}
-          </Nav>
-        </Navbar>
+        <Card>
+          <Card.Body>
+            <Card.Title>Welcome! Profile Page</Card.Title>
+          </Card.Body>
+          {isAuthenticated ? '' : <LoginButton />}
+        </Card>
+
         <UserProfile />
-        <h2>Hello! Welcome to my APP</h2>
       </>
     );
   }

@@ -13,7 +13,7 @@ class Weather extends React.Component {
   render() {
     return(
       <>
-      <h2>Hello!</h2>
+      <h2>Hello! Weather Page</h2>
       </>
     )
   }
