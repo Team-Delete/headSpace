@@ -2,10 +2,9 @@ import React from 'react';
 import { withAuth0, useAuth0 } from '@auth0/auth0-react';
 import { Card, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Profile.css';
 import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap';
-import { User } from '@auth0/auth0-spa-js/dist/typings';
+import Nav from 'react-bootstrap/Nav';
+// import { User } from '@auth0/auth0-spa-js/dist/typings';
 
 
 // TO DO //

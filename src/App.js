@@ -9,11 +9,11 @@ import AboutUs from './AboutUs';
 // import Navbar from 'react-bootstrap/Navbar';
 // import { Button, Nav } from 'react-bootstrap';
 import { withAuth0 } from '@auth0/auth0-react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom';
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route
+// } from 'react-router-dom';
 
 
 
@@ -30,10 +30,12 @@ class App extends React.Component {
     const { isAuthenticated } = this.props.auth0;
     return (
       <>
-        <Router>
+      <AboutUs />
+      <Mood />
+      <Profile />
+        {/* <Router>
           <AboutUs />
           <Switch> 
-            reminder! Change first <Profile /> to Home when merged with kevins code
             <Route exact path="/Profile">{isAuthenticated ? <Mood /> : <Profile />};
             </Route>
             <Route exact path="/Profile">
@@ -42,7 +44,7 @@ class App extends React.Component {
             <Route exact path="/AboutUs">
             </Route>
           </Switch>
-        </Router>
+        </Router> */}
       </>
     );
   }
