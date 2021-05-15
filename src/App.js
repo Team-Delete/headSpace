@@ -9,11 +9,11 @@ import AboutUs from './AboutUs';
 // import Navbar from 'react-bootstrap/Navbar';
 // import { Button, Nav } from 'react-bootstrap';
 import { withAuth0 } from '@auth0/auth0-react';
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route
-// } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
 
 
 
@@ -26,25 +26,25 @@ import { withAuth0 } from '@auth0/auth0-react';
 
 class App extends React.Component {
   render() {
-    console.log('Im here now');
     const { isAuthenticated } = this.props.auth0;
     return (
       <>
-      <AboutUs />
-      <Mood />
-      <Profile />
-        {/* <Router>
-          <AboutUs />
-          <Switch> 
-            <Route exact path="/Profile">{isAuthenticated ? <Mood /> : <Profile />};
+        <Router>
+          <Switch>
+            <Route 
+            exact path="/">{isAuthenticated ? <Mood /> : <Profile />}
             </Route>
             <Route exact path="/Profile">
               <Profile />
             </Route>
             <Route exact path="/AboutUs">
+              <AboutUs />
+            </Route>
+            <Route exact path="/Mood">
+              <Mood />
             </Route>
           </Switch>
-        </Router> */}
+        </Router>
       </>
     );
   }

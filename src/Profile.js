@@ -4,7 +4,7 @@ import { Card, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-// import { User } from '@auth0/auth0-spa-js/dist/typings';
+
 
 
 // TO DO //
@@ -46,7 +46,7 @@ const LogoutButton = () => {
 
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
-  return <Button variant="dark" onClick={() => loginWithRedirect()}>Sign in!</Button>;
+  return <Button variant="dark" onClick={() => loginWithRedirect()}>Log In</Button>;
 };
 
 console.log('IM working here');
@@ -58,17 +58,17 @@ class Profile extends React.Component {
     return (
       <>
         <Navbar bg="dark" variant="dark" fixed="top">
-          <Navbar.Brand>please work</Navbar.Brand>
+          <Navbar.Brand>Head Space</Navbar.Brand>
           <Nav>
             <Nav.Link href="/Profile">Profile</Nav.Link>
-            <Nav.Link href="/About">About Us</Nav.Link>
+            <Nav.Link href="/AboutUs">About Us</Nav.Link>
           </Nav>
           <LoginButton />
           <LogoutButton />
         </Navbar>
         <Card>
           <Card.Body>
-            <Card.Title>Wele! Profile Page</Card.Title>
+            <Card.Title></Card.Title>
           </Card.Body>
           {isAuthenticated ? <LogoutButton /> : <LoginButton />}
         </Card>
