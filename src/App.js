@@ -1,13 +1,13 @@
 import axios from 'axios';
 import React from 'react';
-import Weather from './Weather';
+// import Weather from './Weather';
 import Jokes from './Jokes';
 
 // temp imports to render weather
-import Container from 'react-bootstrap/Container';
 import Error from './Error';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import WeatherDay from './WeatherDay';
 
 class App extends React.Component {
   constructor(props) {
@@ -50,7 +50,7 @@ class App extends React.Component {
       });
       console.log('this works', weatherData);
       this.setState({
-        weatherData: weatherData.data
+        weatherData: weatherData.data[0]
       })
     } catch (err) {
       console.log(`error found!!! ${err.message}`);
@@ -80,25 +80,26 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state.weatherData);
     return (
       <>
-      <Container>
-          {this.state.error ? <Error error={this.state.error}/> : ''}
-          <Form onSubmit={this.handleFormSubmit}>
-            <Form.Group controlId="City">
-              <Form.Label>City name</Form.Label>
-              <Form.Control value={this.state.city} onInput={e => this.setState({ city: e.target.value })}></Form.Control>
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Set WeatherData
+        {this.state.error ? <Error error={this.state.error} /> : ''}
+        <Form onSubmit={this.handleFormSubmit}>
+          <Form.Group controlId="City">
+            <Form.Label>City name</Form.Label>
+            <Form.Control value={this.state.city} onInput={e => this.setState({ city: e.target.value })}></Form.Control>
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Set WeatherData
           </Button>
-          </Form>
-          {this.state.cityData.lat === undefined ?
-            <>
-              <Weather weatherData={this.state.weatherData} />
-            </>
-            : console.log(`dang`)}
-        </Container>
+        </Form>
+        {this.state.cityData.lat === undefined ?
+          <>
+            <WeatherDay weatherData={this.state.weatherData} />
+          </>
+          : console.log(`dang`)}
+
+          {/* <WeatherDay /> */}
         <button onClick={this.handleMoodSubmit}>
           Set Mood and call Joke API
         </button>

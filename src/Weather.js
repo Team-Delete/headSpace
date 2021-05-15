@@ -12,8 +12,7 @@ class Weather extends React.Component {
   render() {
     return (
       <>
-        {this.props.weatherData.map((day, index) => (
-          <WeatherDay key={index} day={day} />))}
+        <WeatherDay />
       </>
     );
   }
