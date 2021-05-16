@@ -1,5 +1,20 @@
 import axios from 'axios';
 import React from 'react';
+import './App.css';
+import Mood from './Mood';
+import Profile from './Profile';
+import AboutUs from './AboutUs';
+// import Weather from './Weather';
+// import Quote from './Quote';
+// import Jokes from './Jokes';
+// import Navbar from 'react-bootstrap/Navbar';
+// import { Button, Nav } from 'react-bootstrap';
+import { withAuth0 } from '@auth0/auth0-react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
 // import Weather from './Weather';
 import Jokes from './Jokes';
 
@@ -80,9 +95,26 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.weatherData);
+    const { isAuthenticated } = this.props.auth0;
     return (
       <>
+        <Router>
+          <Switch>
+            <Route
+              exact path="/">{isAuthenticated ? <Mood /> : <Profile />}
+            </Route>
+            <Route exact path="/Profile">
+              <Profile />
+            </Route>
+            <Route exact path="/AboutUs">
+              <AboutUs />
+            </Route>
+            <Route exact path="/Mood">
+              <Mood />
+            </Route>
+          </Switch>
+        </Router>
+        console.log(this.state.weatherData);
         {this.state.error ? <Error error={this.state.error} /> : ''}
         <Form onSubmit={this.handleFormSubmit}>
           <Form.Group controlId="City">
@@ -99,7 +131,7 @@ class App extends React.Component {
           </>
           : console.log(`dang`)}
 
-          {/* <WeatherDay /> */}
+        {/* <WeatherDay /> */}
         <button onClick={this.handleMoodSubmit}>
           Set Mood and call Joke API
         </button>
@@ -108,5 +140,4 @@ class App extends React.Component {
     )
   }
 }
-
-export default App;
+    export default withAuth0(App);

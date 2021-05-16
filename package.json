@@ -3,6 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
+    "@auth0/auth0-react": "^1.5.0",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^12.8.3",
+    "auth0": "^2.34.2",
+    "axios": "^0.21.1",
+    "react": "^17.0.2",
+    "react-bootstrap": "^1.6.0",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^2.1.8",
+    "router": "^1.3.5",
+    "superagent": "^6.1.0",
+=======
     "@pm2/io": "^5.0.0",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
@@ -18,6 +33,7 @@
     "react-dom": "^17.0.2",
     "react-scripts": "^2.1.8",
     "sv443-joke-api": "^0.1.0",
+>>>>>>> dev
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -43,5 +59,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "File just created to allow provisions of branch settings.  Please do not add to this file File will be deleted when react app has be initiated",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Team-Delete/headSpace.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Team-Delete/headSpace/issues"
   }
 }
