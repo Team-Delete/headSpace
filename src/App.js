@@ -23,6 +23,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import WeatherDay from './WeatherDay';
 
+<<<<<<< HEAD
+// comment for initial ACP purposes
+=======
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -38,6 +41,7 @@ class App extends React.Component {
   componentDidMount() {
     console.log('componentDidMount runs');
   }
+>>>>>>> 8bd43fcf0e236102741adf2799750ae333fdb595
 
   handleFormSubmit = async (event) => {
     event.preventDefault();
