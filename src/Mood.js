@@ -18,7 +18,7 @@ class Mood extends React.Component {
   render() {
     return(
       <>
-      <h2>Hello!</h2>
+      <h2>Hello! Mood Page</h2>
       </>
     )
   }

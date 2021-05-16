@@ -1,16 +1,18 @@
 import React from 'react';
 
-// API CALL
-
-// STATIC NO DB required
-
-// Told me to
-
 class Jokes extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
   render() {
-    return(
+    return (
       <>
-        <h2>Hello!</h2>
+        <div id='joke-container'>
+          <h2 id='joke--text'>{this.props.jokeData}</h2>
+        </div>
       </>
     );
   }
