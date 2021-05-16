@@ -1,11 +1,11 @@
-import axios from 'axios';
-import React from 'react';
+import React, { Component } from 'react';
+import Quote from './Quote';
 import './App.css';
+import axios from 'axios';
 import Mood from './Mood';
 import Profile from './Profile';
 import AboutUs from './AboutUs';
 // import Weather from './Weather';
-// import Quote from './Quote';
 // import Jokes from './Jokes';
 // import Navbar from 'react-bootstrap/Navbar';
 // import { Button, Nav } from 'react-bootstrap';
@@ -17,7 +17,6 @@ import {
 } from 'react-router-dom';
 // import Weather from './Weather';
 import Jokes from './Jokes';
-
 // temp imports to render weather
 import Error from './Error';
 import Form from 'react-bootstrap/Form';
@@ -34,6 +33,10 @@ class App extends React.Component {
       // movieData: [],
       searchedYet: false
     };
+  }
+
+  componentDidMount() {
+    console.log('componentDidMount runs');
   }
 
   handleFormSubmit = async (event) => {
@@ -98,6 +101,7 @@ class App extends React.Component {
     const { isAuthenticated } = this.props.auth0;
     return (
       <>
+        <Quote />
         <Router>
           <Switch>
             <Route
@@ -140,4 +144,4 @@ class App extends React.Component {
     )
   }
 }
-    export default withAuth0(App);
+export default withAuth0(App);
